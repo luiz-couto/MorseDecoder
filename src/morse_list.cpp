@@ -40,28 +40,40 @@ void MorseList::RemoveElement(char name){
 
     code *current = this->start;
     code *previous;
+    bool deleted = false;
 
     while(current->name != name){
         previous = current;
         current = current->prox;
+        if(current == this->end && current->name != name){
+            break;
+        }
     }
 
     if(current == this->start){
         this->start = current->prox;
         current->prox = nullptr;
         delete current;
+        deleted = true;
+
     }
-    else if(current == this->end){
+    else if(current == this->end && current->name == name){
         this->end = previous;
         delete current;
+        deleted = true;
     }
-    else{
+    else if(current != this->start && current != this->end){
         previous->prox = current->prox;
         current->prox = nullptr;
         delete current;
+        deleted = true;
     }
 
-    this->number_of_elements--;
+    if(deleted){
+        this->number_of_elements--;
+    }else{
+        cout << "Não existe esse elemento na lista" << endl;
+    }
 
 }
 
@@ -75,4 +87,14 @@ code MorseList::GetElement(int n){
 
     return *current;
 
+}
+
+void MorseList::Print(){
+
+    code *current = this->start;
+
+    for(int i=0;i<this->number_of_elements;i++){
+        cout << current->name << "   " << current->morse << endl;
+        current = current->prox;
+    }
 }

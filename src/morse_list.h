@@ -23,5 +23,6 @@ class MorseList{
         void InsertElement(char name, string morse);
         void RemoveElement(char name);
         code GetElement(int n); // n -> número de caracteres no código morse
+        void Print();
 
 };

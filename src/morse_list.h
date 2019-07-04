@@ -1,3 +1,7 @@
+#ifndef LIST_H_
+#define LIST_H_
+
+
 #include <iostream>
 #include <sstream>
 
@@ -26,3 +30,5 @@ class MorseList{
         void Print();
 
 };
+
+#endif

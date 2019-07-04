@@ -1,3 +1,6 @@
+#ifndef ARVORE_H_
+#define ARVORE_H_
+
 #include <iostream>
 #include <sstream>
 #include "morse_list.h"
@@ -24,10 +27,12 @@ class Tree{
 
         Tree();
         ~Tree();
-        void InsertElement(code data,node *root, int n, int i);
-        void PopulateTree(MorseList list);
+        void InsertElement(code &data,node *root, int n, int i);
+        void PopulateTree(MorseList *list);
         // n -> numero de caracteres na string morse
         // i -> auxiliar
 
 
 };
+
+#endif

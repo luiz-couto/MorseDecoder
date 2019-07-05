@@ -31,6 +31,8 @@ class Tree{
         void PopulateTree(MorseList *list);
         void GetName(string morse,node *root,int n, int i);
         void PrintWord(string morse_word);
+        void PrintPreOrdem();
+        void PreOrdem(node *root);
         // n -> numero de caracteres na string morse
         // i -> auxiliar
 

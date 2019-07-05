@@ -54,8 +54,6 @@ void Print(string file, Tree *arvore){
         cout << "\n";
     }
     
-
-
 }
 
 int main(){
@@ -66,7 +64,7 @@ int main(){
     PopulateMorseList(&list);
     arvore.PopulateTree(&list);
     Print("test.txt",&arvore);
-    
+    arvore.PrintPreOrdem();
     return 0;
 
 }

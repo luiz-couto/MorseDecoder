@@ -33,12 +33,12 @@ void Tree::InsertElement(code &data,node *root,int n, int i){
     }else{
 
         
-        if(data.morse.substr(i,1) == "."){
+        if(data.morse.substr(i,1) == "-"){
             if(root->right == nullptr)
                 root->right = new node;
             this->InsertElement(data, root->right,n-1,i+1);
         }
-        else if(data.morse.substr(i,1) == "-"){
+        else if(data.morse.substr(i,1) == "."){
             if(root->left == nullptr)
                 root->left = new node;
             this->InsertElement(data, root->left,n-1,i+1);
@@ -81,10 +81,10 @@ void Tree::GetName(string morse,node *root,int n, int i){
     
     }else{
 
-        if(morse.substr(i,1) == "."){
+        if(morse.substr(i,1) == "-"){
             this->GetName(morse,root->right,n-1,i+1);
         }
-        else if(morse.substr(i,1) == "-"){
+        else if(morse.substr(i,1) == "."){
             this->GetName(morse,&(*root->left),n-1,i+1);
         }
 
@@ -106,4 +106,19 @@ void Tree::PrintWord(string morse_word){
         }
    }
         
+}
+
+void Tree::PreOrdem(node *root){
+
+    if(root != nullptr){
+        if(root->data.name != '*')
+            cout << root->data.name << " " << root->data.morse << "\n";
+        this->PreOrdem(root->left);
+        this->PreOrdem(root->right);
+    }
+
+}
+
+void Tree::PrintPreOrdem(){
+    this->PreOrdem(this->root);
 }

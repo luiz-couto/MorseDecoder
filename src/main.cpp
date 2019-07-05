@@ -28,10 +28,16 @@ void Print(string file, Tree *arvore){
     string aux;
     string word;
     string line;
-    ifstream infile(file);
+    //ifstream infile(file);
 
-    while(getline(infile,line)){
+    while(getline(cin,line)){
         
+        if(line == "exit"){
+            break;
+        }
+        if(line == "-a"){
+            arvore->PrintPreOrdem();
+        }
         for(int i=0;i<line.length();i++){
             
             if(line[i-1] != '/')
@@ -56,7 +62,7 @@ void Print(string file, Tree *arvore){
     
 }
 
-int main(){
+int main(int argc, char *argv[]){
 
     
     MorseList list;
@@ -64,7 +70,8 @@ int main(){
     PopulateMorseList(&list);
     arvore.PopulateTree(&list);
     Print("test.txt",&arvore);
-    arvore.PrintPreOrdem();
+    if(argc == 2)
+        arvore.PrintPreOrdem();
     return 0;
 
 }

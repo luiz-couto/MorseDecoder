@@ -69,18 +69,38 @@ void Tree::PopulateTree(MorseList *list){
         }
 
     }
+        
+    this->GetName(".-..",this->root,4,0);
+    this->GetName("..",this->root,2,0);
+    this->GetName("..-",this->root,3,0);
+    this->GetName("--..",this->root,4,0);
+    cout << endl;
+    //printf("%s\n",t);
+
+    //cout << this->root->left->data.name << endl;
     
+
+}
+
+char Tree::GetName(string morse,node *root,int n, int i){
+
+    if(n == 0){
+        
+        cout << root->data.name;
+        
     
-    
-    // code x = list->GetElement(1);
-    // this->InsertElement(x,this->root,1,0);
-    // list->RemoveElement(x.name);
-    // x = list->GetElement(1);
-    // this->InsertElement(x,this->root,1,0);
-    // list->RemoveElement(x.name);
-    // x = list->GetElement(2);
-    // this->InsertElement(x,this->root,2,0);
-    cout << this->root->right->left->right->right->data.name << endl;
-    
+    }else{
+
+        if(morse.substr(i,1) == "."){
+            this->GetName(morse,root->right,n-1,i+1);
+        }
+        else if(morse.substr(i,1) == "-"){
+            this->GetName(morse,&(*root->left),n-1,i+1);
+        }
+
+
+    }
+
+
 
 }

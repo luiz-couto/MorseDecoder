@@ -32,6 +32,7 @@ int main(){
     Tree arvore;
     PopulateMorseList(&list);
     arvore.PopulateTree(&list);
+    //arvore.GetName("-",qualquer,1,0);
     
     return 0;
 

@@ -26,25 +26,21 @@ void Tree::InsertElement(code &data,node *root,int n, int i){
     
     if(n == 0){
         
-        
         root->data = data;
         root->left = nullptr;
         root->right = nullptr;
-        
-        
-        printf("HEY\n");
 
     }else{
 
         
         if(data.morse.substr(i,1) == "."){
-            
-            root->right = new node;
+            if(root->right == nullptr)
+                root->right = new node;
             this->InsertElement(data, root->right,n-1,i+1);
         }
         else if(data.morse.substr(i,1) == "-"){
-            
-            root->left = new node;
+            if(root->left == nullptr)
+                root->left = new node;
             this->InsertElement(data, root->left,n-1,i+1);
         }
     }
@@ -54,12 +50,37 @@ void Tree::InsertElement(code &data,node *root,int n, int i){
 
 void Tree::PopulateTree(MorseList *list){
     
+    
     code x = list->GetElement(1);
-    this->InsertElement(x,this->root,1,0);
-    cout << this->root->left->data.name << endl;
-    //cout << x.name << endl;
-    //list->RemoveElement(x.name);
-    //cout << this->root->right->data.name << endl;
+    for (int n=1;n<=5;n++){
+        
+        x = list->GetElement(n);
+        this->InsertElement(x,this->root,n,0);
+        list->RemoveElement(x.name);
+       
+        for(int k=0;k<list->GetSize();k++){
+
+            if(list->GetElementByPosition(k).morse.length() == n){
+                
+                n = n-1;
+                break;
+            }
+                
+        }
+
+    }
+    
+    
+    
+    // code x = list->GetElement(1);
+    // this->InsertElement(x,this->root,1,0);
+    // list->RemoveElement(x.name);
+    // x = list->GetElement(1);
+    // this->InsertElement(x,this->root,1,0);
+    // list->RemoveElement(x.name);
+    // x = list->GetElement(2);
+    // this->InsertElement(x,this->root,2,0);
+    cout << this->root->right->left->right->right->data.name << endl;
     
 
 }

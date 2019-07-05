@@ -98,3 +98,19 @@ void MorseList::Print(){
         current = current->prox;
     }
 }
+
+int MorseList::GetSize(){
+    return this->number_of_elements;
+}
+
+code MorseList::GetElementByPosition(int p){
+
+    code *current = this->start;
+    
+    for(int i=0;i<p;i++){
+        current = current->prox;
+    }
+
+    return *current;
+
+}

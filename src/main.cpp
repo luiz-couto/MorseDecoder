@@ -23,7 +23,40 @@ void PopulateMorseList(MorseList *list){
 
 }
 
+void Print(string file, Tree *arvore){
+    
+    string aux;
+    string word;
+    string line;
+    ifstream infile(file);
 
+    while(getline(infile,line)){
+        
+        for(int i=0;i<line.length();i++){
+            
+            if(line[i-1] != '/')
+                aux = line[i];
+            
+            if(aux != "/") {
+                word = word + aux;
+                if(i == line.length()-1){
+                    word = word + " ";
+                }
+            }
+            if((aux == "/")||(i == line.length()-1)){
+                arvore->PrintWord(word);
+                word = "";
+                aux = "";
+                cout << " ";
+            }
+        }
+
+        cout << "\n";
+    }
+    
+
+
+}
 
 int main(){
 
@@ -32,7 +65,7 @@ int main(){
     Tree arvore;
     PopulateMorseList(&list);
     arvore.PopulateTree(&list);
-    //arvore.GetName("-",qualquer,1,0);
+    Print("test.txt",&arvore);
     
     return 0;
 

@@ -111,7 +111,7 @@ void Tree::PrintWord(string morse_word){
 void Tree::PreOrdem(node *root){
 
     if(root != nullptr){
-        if(root->data.name != '*')
+        if(root->data.name != '*' && root->data.morse != "")
             cout << root->data.name << " " << root->data.morse << "\n";
         this->PreOrdem(root->left);
         this->PreOrdem(root->right);

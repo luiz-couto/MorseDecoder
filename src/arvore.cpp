@@ -1,6 +1,7 @@
 #include "arvore.h"
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 Tree::Tree(){
     
@@ -70,19 +71,20 @@ void Tree::PopulateTree(MorseList *list){
 
     }
         
-    this->GetName(".-..",this->root,4,0);
-    this->GetName("..",this->root,2,0);
-    this->GetName("..-",this->root,3,0);
-    this->GetName("--..",this->root,4,0);
-    cout << endl;
+    // this->GetName(".-..",this->root,4,0);
+    // this->GetName("..",this->root,2,0);
+    // this->GetName("..-",this->root,3,0);
+    // this->GetName("--..",this->root,4,0);
+    // cout << endl;
     //printf("%s\n",t);
 
     //cout << this->root->left->data.name << endl;
-    
+    this->PrintWord(".-.. .. ..- --.. ");
+    cout << endl;
 
 }
 
-char Tree::GetName(string morse,node *root,int n, int i){
+void Tree::GetName(string morse,node *root,int n, int i){
 
     if(n == 0){
         
@@ -101,6 +103,19 @@ char Tree::GetName(string morse,node *root,int n, int i){
 
     }
 
+}
 
-
+void Tree::PrintWord(string morse_word){
+    
+   string aux;
+   for(int i=0;i<morse_word.length();i++){
+        
+        if(morse_word[i] != ' '){
+            aux = aux+morse_word[i];
+        }else{
+            this->GetName(aux,this->root,aux.length(),0);
+            aux = "";
+        }
+   }
+        
 }

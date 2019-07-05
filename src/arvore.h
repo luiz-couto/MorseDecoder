@@ -29,7 +29,8 @@ class Tree{
         ~Tree();
         void InsertElement(code &data,node *root, int n, int i);
         void PopulateTree(MorseList *list);
-        char GetName(string morse,node *root,int n, int i);
+        void GetName(string morse,node *root,int n, int i);
+        void PrintWord(string morse_word);
         // n -> numero de caracteres na string morse
         // i -> auxiliar
 

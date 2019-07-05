@@ -24,12 +24,11 @@ void PopulateMorseList(MorseList *list){
 
 }
 
-void Print(string file, Tree *arvore){
+void Print(Tree *arvore){
     
     string aux;
     string word;
     string line;
-    //ifstream infile(file);
 
     while(getline(cin,line)){
 
@@ -68,9 +67,11 @@ int main(int argc, char *argv[]){
     
     MorseList list;
     Tree arvore;
+    
     PopulateMorseList(&list);
     arvore.PopulateTree(&list);
-    Print("test.txt",&arvore);
+    Print(&arvore);
+    
     if(argc == 2)
         if(strcmp(argv[1],"-a") == 0)
             arvore.PrintPreOrdem();

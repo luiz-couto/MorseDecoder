@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include <string.h>
 
 #include "morse_list.h"
 #include "arvore.h"
@@ -31,7 +32,7 @@ void Print(string file, Tree *arvore){
     //ifstream infile(file);
 
     while(getline(cin,line)){
-        
+
         if(line == "exit"){
             break;
         }
@@ -71,7 +72,9 @@ int main(int argc, char *argv[]){
     arvore.PopulateTree(&list);
     Print("test.txt",&arvore);
     if(argc == 2)
-        arvore.PrintPreOrdem();
+        if(strcmp(argv[1],"-a") == 0)
+            arvore.PrintPreOrdem();
+    
     return 0;
 
 }
